@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain, webContents} = require('electron')
 const path = require('path')
 
 function createWindow () {
@@ -16,6 +16,27 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+
+  ipcMain.on('new-tab', (event, webContentsId) => {
+    const tabWebContents = webContents.fromId(webContentsId)
+    tabWebContents.setWindowOpenHandler((details) => {
+      console.log(`Handle ${details.url} as ${details.disposition} for ${tabWebContents.id}`)
+      switch(details.disposition) {
+          case "foreground-tab":
+              mainWindow.webContents.send('open-tab', {url: details.url, active: true})
+              break
+          case "background-tab":
+              mainWindow.webContents.send('open-tab', {url: details.url, active: false})
+              break
+          case "new-window":
+              return {
+                  action: 'allow'
+              }
+
+      }
+      return { action: 'deny' }
+    })
+  })
 }
 
 // This method will be called when Electron has finished
