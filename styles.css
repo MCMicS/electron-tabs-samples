@@ -1,3 +1,9 @@
 /* styles.css */
 
 /* Add styles here to customize the appearance of your app */
+
+@import "node_modules/electron-tabs/electron-tabs.css";
+
+body {
+    margin: 0;
+}

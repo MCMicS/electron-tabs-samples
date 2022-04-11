@@ -6,17 +6,23 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/MCMicS/electron-tabs-samples",
   "keywords": [
     "Electron",
     "quick",
     "start",
     "tutorial",
-    "demo"
+    "demo",
+    "tab",
+    "tabs",
+    "webview"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "MCMicS",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^18.0.2"
+  },
+  "dependencies": {
+    "electron-tabs": "^0.17.0"
   }
 }
