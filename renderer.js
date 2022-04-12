@@ -1,4 +1,5 @@
 const TabGroup = require('electron-tabs')
+const ipcRenderer = require("electron").ipcRenderer;
 
 let tabGroup = new TabGroup();
 
@@ -13,15 +14,13 @@ tabGroup.addTab({
     }
 });
 
-const webview = document.getElementById('foo')
-
-webview.addEventListener('new-window', (e) => {
-    e.preventDefault()
+function openTab(details) {
+    console.log(`Open Tab ${details.url}`)
     tabGroup.addTab({
         title: "new page",
-        src: e.url,
+        src: details.url,
         active: true,
     });
-
-});
+}
+ipcRenderer.on('open-tab', (event, details) => openTab(details))
 

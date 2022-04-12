@@ -15,11 +15,11 @@ function createWindow () {
     mainWindow.maximize()
     mainWindow.show()
     mainWindow.loadFile('index.html')
-
+    return mainWindow
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    const mainWindow = createWindow()
 
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
@@ -27,10 +27,12 @@ app.whenReady().then(() => {
 
     app.on('web-contents-created', function (webContentsCreatedEvent, contents) {
         if (contents.getType() === 'webview') {
-            contents.on('new-window', function (newWindowEvent, url) {
-                console.log('block - handled in renderer.js');
-                newWindowEvent.preventDefault();
-            });
+            contents.setWindowOpenHandler(details => {
+                mainWindow.webContents.send('open-tab', details)
+                return {
+                    action: "deny"
+                }
+            })
         }
     });
 })
