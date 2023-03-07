@@ -5,17 +5,39 @@
 // selectively enable features needed in the rendering
 // process.
 
-const TabGroup = require('electron-tabs')
-
-let tabGroup = new TabGroup({
-    newTab: {
-        title: 'New Tab'
-    }
-});
-
-tabGroup.addTab({
-    title: "Electron",
-    src: "https://www.electronjs.org/",
+const TabGroup = require("electron-tabs");
+let tabGroup = new TabGroup();
+tabGroup.addTab(
+  {
+    title: "index",
+    src: `https://github.com/MCMicS/electron-tabs-samples/tree/puchenhui/refreshTab/`,
+    active: true,
+    closable: false,
     visible: true,
-    active: true
-});
+    webviewAttributes: {
+      allowpopups: true,
+    },
+  });
+
+openAddTab = (details, name) => {
+  let tab = tabGroup.addTab({
+    title: name,
+    src: details.url,
+    active: true,
+    webviewAttributes: {
+      allowpopups: true,
+    },
+  });
+  tab.webview.addEventListener('close', () => tab.close())
+}
+openAddTab({url: "https://github.com/puchenhui"}, 'Second')
+
+onFlushed = () => {
+  let activeTab = tabGroup.getActiveTab()
+  if (activeTab) {
+    console.log(activeTab);
+    let webview = activeTab.webview;
+    console.log('Reload tab with URL: ' + webview.getURL());
+    webview.reload();
+  }
+}

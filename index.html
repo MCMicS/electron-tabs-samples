@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <title>electron-tabs-demo</title>
-    <link href="./styles.css" rel="stylesheet">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refresh tab</title>
+  <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="nav-top">
+  <div class="nav-tabs">
     <div class="etabs-tabgroup">
       <div class="etabs-tabs"></div>
       <div class="etabs-buttons"></div>
     </div>
-    <div class="etabs-views"></div>
+  </div>
+  <div class="nav-btn">
+    <ul>
+      <li onclick="onFlushed()">onFlushed</li>
+      <li onclick="toMin()"><img src="./img/win_min.png" alt=""></li>
+      <li onclick="toMax()"><img id='max' src="./img/win_small.png" alt=""></li>
+      <li onclick="toClose()"><img src="./img/win_close.png" alt=""></li>
+    </ul>
+  </div>
+</div>
+<div class="etabs-views"></div>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<!-- You can also require other files to run in this process -->
+<script src="./renderer.js"></script>
+</body>
 </html>
