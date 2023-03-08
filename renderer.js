@@ -6,6 +6,7 @@
 // process.
 
 const TabGroup = require("electron-tabs");
+const { ipcRenderer } = require('electron')
 let tabGroup = new TabGroup();
 tabGroup.addTab(
   {
@@ -40,4 +41,8 @@ onFlushed = () => {
     console.log('Reload tab with URL: ' + webview.getURL());
     webview.reload();
   }
+}
+
+toClose = () => {
+  ipcRenderer.send('close-app')
 }

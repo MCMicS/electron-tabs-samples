@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
 // see https://www.electronjs.org/de/docs/latest/api/frameless-window
@@ -15,6 +15,10 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+
+  ipcMain.on('close-app', (event, title) => {
+    app.quit()
+  })
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
