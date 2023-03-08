@@ -2,13 +2,15 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+// see https://www.electronjs.org/de/docs/latest/api/frameless-window
 function createWindow () {
   const mainWindow = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false, // needed for Electron >= 12.x
       webviewTag: true
-    }
+    },
+    titleBarStyle: 'hidden'
   });
 
   // and load the index.html of the app.

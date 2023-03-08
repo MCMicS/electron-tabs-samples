@@ -4,6 +4,191 @@
 
 @import "node_modules/electron-tabs/electron-tabs.css";
 
-body {
-    margin: 0;
+.etabs-tabgroup {
+  width: 100%;
+  height: 32px;
+  cursor: default;
+  font: caption;
+  font-size: 14px;
+  -webkit-user-select: none;
+  user-select: none;
+  display: none;
+  -webkit-app-region: no-drag;
+}
+.etabs-tabgroup.visible {
+  display: block;
+}
+/* 父元素 */
+.etabs-tabs{
+  display: flex;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+/* 子元素 */
+.etabs-tab {
+  display: none;
+  position: relative;
+  color: #666;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  padding: 0 30px 0 10px;
+  border: 1px solid #dcd8d8;
+  background: linear-gradient(0deg, #DCE0E3, #EFF0F4);
+  font-size: 12px;
+  background-color: #ccc;
+  cursor: default;
+  max-width: 200px;
+  flex: 1 ;
+  width: 0;
+}
+.nav-tabs{
+  flex: 1;
+
+}
+/* Dragula */
+.etabs-tab.gu-mirror {
+  padding-bottom: 0;
+}
+.etabs-tab:first-child {
+  width: 50px;
+  min-width: 50px !important;
+  padding: 0;
+}
+.etabs-tab.visible {
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+}
+.etabs-tab.active {
+  background: #fff;
+}
+.etabs-tab.flash {
+  background: linear-gradient(to bottom, #fff3aa 0%, #ffe325 100%);
+}
+.etabs-buttons {
+  float: left;
+}
+.etabs-buttons button {
+  float: left;
+  color: #666;
+  background: none;
+  border: none;
+  font-size: 12px;
+  margin-top: 6px;
+  border-radius: 2px;
+  margin-left: 4px;
+  width: 20px;
+  text-align: center;
+  padding: 4px 0;
+}
+.etabs-buttons button:hover {
+  color: #eee;
+}
+.etabs-tab-badge {
+  position: absolute;
+  right: 0;
+  top: -7px;
+  background: red;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 10px;
+  padding: 0 5px;
+}
+.etabs-tab-badge.hidden {
+  display: none;
+}
+.etabs-tab-icon {
+  display: inline-block;
+  height: 12px;
+}
+.etabs-tab-icon img {
+  max-width: 12px;
+  max-height: 12px;
+  margin-left: -15px;
+  margin-right: 9px;
+}
+.etabs-tab-title {
+  width: 188px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.etabs-tab-buttons button {
+  display: inline-block;
+  color: #666;
+  margin-left: 10px;
+  background: none;
+  border: none;
+  width: 20px;
+  border-radius: 24px;
+  margin-right: -25px;
+  font-size: 20px;
+  cursor: pointer;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  position: relative;
+  top: 2px;
+  padding: 0 0px;
+}
+.etabs-tab-buttons button:hover {
+  color: #eee;
+  background-color: #aaa;
+}
+.etabs-views {
+  position: relative;
+  height: calc(100vh - 32px);
+}
+.etab-view {
+  position: relative;
+}
+.nav-top {
+  height: 32px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  background: linear-gradient(0deg, #DCE0E3, #EFF0F4);
+}
+.nav-top .nav-btn {
+  margin-right: 10px;
+  margin-left: 40px;
+}
+.nav-top .nav-btn ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.nav-top .nav-btn ul li {
+  -webkit-app-region: no-drag;
+  list-style: none;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0 10px;
+}
+.nav-top .nav-btn ul li img {
+  width: 12px;
+}
+.nav-top .nav-btn ul li:nth-child(1) img {
+  width: 14px;
+}
+.nav-top .nav-btn ul li:nth-child(2) img {
+  width: 12px;
+  height: 2px;
+}
+.nav-top .nav-btn ul li:nth-child(4) {
+  margin-right: 0;
+}
+.nav-top .nav-btn ul li:nth-child(4) img {
+  width: 10px;
 }
