@@ -5,8 +5,7 @@ const path = require('path')
 function createWindow () {
   const mainWindow = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false, // needed for Electron >= 12.x
+      preload: path.join(__dirname, 'preload.js'),
       webviewTag: true
     }
   });

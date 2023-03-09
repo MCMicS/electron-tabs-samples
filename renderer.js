@@ -6,13 +6,7 @@
  * to expose Node.js functionality from the main process.
  */
 
-const TabGroup = require('electron-tabs')
-
-let tabGroup = new TabGroup({
-    newTab: {
-        title: 'New Tab'
-    }
-});
+const tabGroup = document.querySelector("tab-group");
 
 tabGroup.addTab({
     title: "Electron",

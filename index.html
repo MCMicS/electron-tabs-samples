@@ -8,12 +8,11 @@
     <link href="./styles.css" rel="stylesheet">
   </head>
   <body>
-    <div class="etabs-tabgroup">
-      <div class="etabs-tabs"></div>
-      <div class="etabs-buttons"></div>
-    </div>
-    <div class="etabs-views"></div>
+    <tab-group sortable="true">
+    </tab-group>
 
+    <!-- init electron-tabs -->
+    <script src="node_modules/electron-tabs/dist/electron-tabs.js"></script>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>
