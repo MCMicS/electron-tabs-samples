@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "electron-tabs-samples",
+  "version": "0.17.0",
+  "description": "A minimal Electron application with electron-tabs",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
