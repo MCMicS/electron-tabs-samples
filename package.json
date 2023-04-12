@@ -20,7 +20,7 @@
   "author": "MCMicS",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^23.2.1"
+    "electron": "^24.1.0"
   },
   "dependencies": {
     "electron-tabs": "^1.0.1"
